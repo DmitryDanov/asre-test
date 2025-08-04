@@ -1,0 +1,26 @@
+﻿    version: '3.8'
+
+    services:
+      api_service:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        ports:
+          - "8080:80"
+        depends_on:
+          - sqlserver
+        environment:
+          - ASPNETCORE_ENVIRONMENT=Production
+
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        ports:
+          - "1433:1433"
+        environment:
+          SA_PASSWORD: "i'fePGN*306L" # Do not commit passwords to repos in production! It's just for this assessment app only!
+          ACCEPT_EULA: "Y"
+        volumes:
+          - sqlserver_data:/var/opt/mssql
+
+    volumes:
+      sqlserver_data:

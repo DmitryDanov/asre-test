@@ -1,7 +1,6 @@
 ﻿using ASRE.DataGenerator;
 using ASRE.DataGenerator.Services.DataGenerator;
 using ASRE.DataGenerator.Services.HttpSender;
-using Bogus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,7 +13,6 @@ IHost host =
 
             services.AddTransient<Application>();
             services.AddHttpClient();
-            services.AddTransient<Faker>();
             services.AddTransient<IDataGenerator, DataGenerator>();
             services.AddTransient<IHttpSenderService, HttpSenderService>();
         })

@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "471ce13a-d8e9-47d7-8cbd-ba1c6ca81ebf",
+		"name": "ASRE Patients",
+		"description": "This API collection consists of endpoints for test project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47254076",
+		"_collection_link": "https://dzmitry-danau-2065310.postman.co/workspace/Dzmitry's-Workspace~26e896c0-3b63-465e-8ea5-244b74cc3cf8/collection/47254076-471ce13a-d8e9-47d7-8cbd-ba1c6ca81ebf?action=share&source=collection_link&creator=47254076"
+	},
+	"item": [
+		{
+			"name": "POST Variations",
+			"item": [
+				{
+					"name": "POST Only Required Fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": {\r\n        \"family\": \"Иванов\"\r\n    },\r\n    \"birthDate\": \"2024-01-13T18:25:43\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST No Request Fields",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": {\r\n        \"use\": \"official\",\r\n        \"given\": [\r\n            \"Иван\",\r\n            \"Иванович\"\r\n        ]\r\n    },\r\n    \"gender\": \"male\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The folder contains several endpoints with different payloads to quickly verify POST endpoint behaviour"
+		},
+		{
+			"name": "PATCH Variations",
+			"item": [
+				{
+					"name": "PATH Empty Body",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patients/02C62A1D-6410-4A48-3B49-08DDD27DD446",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients",
+								"02C62A1D-6410-4A48-3B49-08DDD27DD446"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Partial Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": {\r\n        \"use\": \"official\",\r\n        \"family\": \"Иванов updated\"\r\n    },\r\n    \"gender\": \"unknown\",\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/patients/02C62A1D-6410-4A48-3B49-08DDD27DD446",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients",
+								"02C62A1D-6410-4A48-3B49-08DDD27DD446"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The folder contains several endpoints with different payloads to quickly verify PATCH endpoint behaviour"
+		},
+		{
+			"name": "GET Variations",
+			"item": [
+				{
+					"name": "GET (Equal)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=eq1959-06-01T21:37",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "eq1959-06-01T21:37"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET (Not Equal)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=ne1959-06-01",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "ne1959-06-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET (Greater than)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=gt1959-06-01",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "gt1959-06-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET (Less than)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=lt1959-06-01T21:37",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "lt1959-06-01T21:37"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET (Greater or Equal than)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=ge1959-06-01T21:37:50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "ge1959-06-01T21:37:50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET (Less or Equal than)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=le1959-06-01T21:37:50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "le1959-06-01T21:37:50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET (Appriximate)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/patients?birthDate=ap1959-06-01",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"patients"
+							],
+							"query": [
+								{
+									"key": "birthDate",
+									"value": "ap1959-06-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The folder contains several endpoints with different payloads to quickly verify GET endpoint behaviour. It's primarily for checking date filterings"
+		},
+		{
+			"name": "POST Patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {\r\n        \"use\": \"official\",\r\n        \"family\": \"Иванов\",\r\n        \"given\": [\r\n            \"Иван\",\r\n            \"Иванович\"\r\n        ]\r\n    },\r\n    \"gender\": \"male\",\r\n    \"birthDate\": \"2024-01-13T18:25:43\",\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/patients",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Patient (single)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {\r\n        \"use\": \"official\",\r\n        \"family\": \"Иванов\",\r\n        \"given\": [\r\n            \"Иван\",\r\n            \"Иванович\"\r\n        ]\r\n    },\r\n    \"gender\": \"male\",\r\n    \"birthDate\": \"2024-01-13T18:25:43\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/patients/91b4eb21-4db0-4743-9a20-08ddd362b673",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"patients",
+						"91b4eb21-4db0-4743-9a20-08ddd362b673"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Patient",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/patients/91b4eb21-4db0-4743-9a20-08ddd362b673",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"patients",
+						"91b4eb21-4db0-4743-9a20-08ddd362b673"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Patient",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {\r\n        \"use\": \"official updated\",\r\n        \"family\": \"Иванов updated\",\r\n        \"given\": [\r\n            \"Иван updated\",\r\n            \"Иванович updated\"\r\n        ]\r\n    },\r\n    \"gender\": \"female\",\r\n    \"birthDate\": \"2025-02-18T09:17:29\",\r\n    \"active\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/patients/91b4eb21-4db0-4743-9a20-08ddd362b673",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"patients",
+						"91b4eb21-4db0-4743-9a20-08ddd362b673"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET (All)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/patients",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"patients"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

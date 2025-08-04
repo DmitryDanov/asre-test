@@ -1,4 +1,5 @@
 ﻿using ASRE.DataLayer.Models;
+using ASRE.DataLayer.ValueConverters;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASRE.DataLayer.Context;
@@ -32,7 +33,8 @@ public sealed class AppDbContext : DbContext
             entity.HasMany(p => p.PatientGivenNames).WithOne(p => p.Patient).HasForeignKey(p => p.PatientId);
 
             // Creating BirthDate of datetime instead of datetime2 as we don't need additional precision and support of min values of 01/01/0001.
-            entity.Property(p => p.BirthDate).HasColumnType("datetime");
+            // Remove milliseconds from the date when saving it to the database.
+            entity.Property(p => p.BirthDate).HasColumnType("datetime").HasConversion<DateTimeWithoutMillisecondsConverter>();
         });
 
         modelBuilder.Entity<PatientGivenName>();

@@ -44,6 +44,8 @@ internal sealed class HttpSenderService : IHttpSenderService, IDisposable
     public void Dispose()
     {
         _httpClient.Dispose();
+
+        GC.SuppressFinalize(this);
     }
 
     /// <inheritdoc/>
